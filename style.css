@@ -118,3 +118,7 @@ ul > li {
   justify-content: space-between;
   gap: 10px;
 }
+
+ul > li span {
+  flex: 1;
+}

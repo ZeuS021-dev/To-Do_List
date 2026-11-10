@@ -11,13 +11,9 @@ tarefas.forEach(function (tarefaSalva) {
   const textoElemento = document.createElement("span");
   textoElemento.textContent = tarefaSalva.nome;
 
-  textoTarefa.appendChild(textoElemento);
-  lista.appendChild(textoTarefa);
-
   const excluir = document.createElement("button");
   excluir.id = "excluir";
   excluir.textContent = "Excluir";
-  textoTarefa.appendChild(excluir);
 
   excluir.addEventListener("click", function () {
     tarefas = tarefas.filter(function (item) {
@@ -53,8 +49,11 @@ tarefas.forEach(function (tarefaSalva) {
 
     localStorage.setItem("minhasTarefas", JSON.stringify(tarefas));
   });
-
   textoTarefa.appendChild(checkbox);
+  textoTarefa.appendChild(textoElemento);
+  textoTarefa.appendChild(excluir);
+
+  lista.appendChild(textoTarefa);
 });
 
 // Adicionar novas tarefas
@@ -79,16 +78,9 @@ adicionar.addEventListener("click", function () {
     const textoElemento = document.createElement("span");
     textoElemento.textContent = nomeTarefa;
 
-    textoTarefa.appendChild(textoElemento);
-    lista.appendChild(textoTarefa);
-
-    tarefa.value = "";
-
     const excluir = document.createElement("button");
     excluir.id = "excluir";
     excluir.textContent = "Excluir";
-
-    textoTarefa.appendChild(excluir);
 
     excluir.addEventListener("click", function () {
       tarefas = tarefas.filter(function (item) {
@@ -103,8 +95,6 @@ adicionar.addEventListener("click", function () {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
 
-    textoTarefa.appendChild(checkbox);
-
     checkbox.addEventListener("change", function () {
       novaTarefa.concluida = checkbox.checked;
 
@@ -118,5 +108,12 @@ adicionar.addEventListener("click", function () {
 
       localStorage.setItem("minhasTarefas", JSON.stringify(tarefas));
     });
+    textoTarefa.appendChild(checkbox);
+    textoTarefa.appendChild(textoElemento);
+    textoTarefa.appendChild(excluir);
+
+    lista.appendChild(textoTarefa);
+
+    tarefa.value = "";
   }
 });
