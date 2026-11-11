@@ -49,6 +49,8 @@ tarefas.forEach(function (tarefaSalva) {
 
     localStorage.setItem("minhasTarefas", JSON.stringify(tarefas));
   });
+
+
   textoTarefa.appendChild(checkbox);
   textoTarefa.appendChild(textoElemento);
   textoTarefa.appendChild(excluir);
@@ -56,8 +58,10 @@ tarefas.forEach(function (tarefaSalva) {
   lista.appendChild(textoTarefa);
 });
 
+
+
 // Adicionar novas tarefas
-adicionar.addEventListener("click", function () {
+function adicionarTarefa() {
   if (tarefa.value.trim() !== "") {
     const nomeTarefa = tarefa.value;
 
@@ -115,5 +119,13 @@ adicionar.addEventListener("click", function () {
     lista.appendChild(textoTarefa);
 
     tarefa.value = "";
+  }
+}
+
+// funcionalidade do botão adicionar e evento pra adicionar quando o Enter for clicado também
+adicionar.addEventListener("click", adicionarTarefa);
+tarefa.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    adicionarTarefa();
   }
 });
