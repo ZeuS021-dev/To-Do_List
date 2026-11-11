@@ -20,20 +20,40 @@ div {
     rgba(9, 9, 121, 1) 50%,
     rgba(0, 212, 255, 1) 100%
   );
+
+  animation: switching-bg 1.5s ease infinite;
 }
 
 div > h1 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 3em;
   font-weight: bold;
-  color: #ffffff;
+
+  background: linear-gradient(
+    90deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+
   padding: 20px;
   text-align: center;
   box-shadow: 2px 3px 19px 4px rgba(0, 0, 0, 0.21);
+
+  animation: rainbow 5s linear infinite;
 }
 
 ul > h2 {
   font-size: 3em;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 
   padding-bottom: 50px;
 }
@@ -139,4 +159,46 @@ div#list-background {
   padding: 20px;
   border-radius: 3px;
   margin: 50px auto;
+
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: black;
+  }
+  100% {
+    background-color: rgb(0, 167, 167);
+  }
+}
+
+@keyframes switching-bg {
+  0% {
+    background: #9900ff;
+    background: radial-gradient(
+      circle,
+      rgba(153, 0, 255, 1) 0%,
+      rgba(9, 9, 121, 1) 50%,
+      rgba(0, 212, 255, 1) 100%
+    );
+  }
+  100% {
+    background: #9900ff;
+    background: radial-gradient(
+      circle,
+      rgba(153, 0, 255, 1) 27%,
+      rgba(9, 9, 121, 1) 81%,
+      rgba(0, 212, 255, 1) 100%
+    );
+  }
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+    font-size: 3.1em;
+  }
 }
